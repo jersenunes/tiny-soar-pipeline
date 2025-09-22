@@ -1,0 +1,14 @@
+{
+  "alert_id": "123",
+  "source": "test",
+  "type": "Phishing",
+  "created_at": "2025-09-20T14:03:10Z",
+  "asset": { "device_id": "dev-9999", "hostname": "HR-LAPTOP-15", "ip": "10.10.10.50" },
+  "indicators": {
+    "ipv4": ["76.76.21.21"],
+    "domains": ["atomicredteam.io"],
+    "urls": ["https://www.atomicredteam.io/"],
+    "sha256": ["7b1f4c2d16e0a0b43cbae2f9a9c2dd7e2bb3a0aaad6c0ad66b341f8b7deadbe0"]
+  },
+  "raw": { "provider": "azure", "workspace": "prod", "rule_id": "AZ-PHI-10" }
+}

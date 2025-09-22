@@ -1,0 +1,7 @@
+indicators:
+  ipv4: ["203.0.113.10"]
+  domains: ["ok.partner.example"]
+  urls: []
+  sha256: []
+assets:
+  device_ids: ["dev-0000"]

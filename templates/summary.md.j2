@@ -1,0 +1,57 @@
+# Incident Summary
+
+**Incident ID**: {{ incident.incident_id }}  
+**Alert Type**: {{ incident.source_alert.type }}  
+**Asset**: {{ incident.asset.hostname }} ({{ incident.asset.ip }})  
+
+---
+
+## Indicators
+
+| Type    | Value    | Verdict     | Score | Sources            | Allowlisted |
+|---------|----------|-------------|-------|--------------------|-------------|
+{% for ioc in incident.indicators|sort(attribute="risk.score", reverse=True) %}
+| {{ ioc.type }} | {{ ioc.value }} | {{ ioc.risk.verdict|default("unknown") }} | {{ ioc.risk.score|default(0) }} | {{ ioc.risk.sources|join(", ") if ioc.risk.sources else "" }} | {{ ioc.allowlisted }} |
+{% endfor %}
+
+---
+
+## Severity & Tags
+- **Severity**: {{ incident.triage.severity }} ({{ incident.triage.bucket }})  
+- **Tags**: {{ incident.triage.tags|join(", ") }}
+
+---
+
+## MITRE ATT&CK
+{% if incident.mitre %}
+- Techniques:
+{% for t in incident.mitre['techniques'] %}
+  - {{ t }}
+{% endfor %}
+{% else %}
+_No MITRE techniques mapped._
+{% endif %}
+
+---
+
+## Actions Taken
+{% if incident.actions %}
+{% for action in incident.actions %}
+- {{ action.type }} → {{ action.target }} → {{ action.result }} ({{ action.ts }})
+{% endfor %}
+{% else %}
+_No automated actions taken._
+{% endif %}
+
+---
+
+## Timeline
+{% if incident.timeline %}
+| Stage     | Timestamp           | Details |
+|-----------|---------------------|---------|
+{% for entry in incident.timeline %}
+| {{ entry.stage }} | {{ entry.ts }} | {{ entry.details }} |
+{% endfor %}
+{% else %}
+_No timeline available._
+{% endif %}

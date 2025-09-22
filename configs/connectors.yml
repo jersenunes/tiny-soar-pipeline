@@ -1,0 +1,9 @@
+providers:
+  defender_ti:
+    base_url: "file://mocks/ti"
+  reversinglabs:
+    base_url: "file://mocks/ti"
+  anomali:
+    base_url: "file://mocks/ti"
+edr:
+  base_url: "http://localhost:8081"

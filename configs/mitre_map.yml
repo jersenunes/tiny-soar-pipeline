@@ -1,0 +1,7 @@
+types:
+  CredentialAccess: ["T1056", "T1555"]
+  Beaconing: ["T1071"]
+  Malware: ["T1204", "T1059"]
+  Phishing: ["T1566"]
+  C2: ["T1105"]
+defaults: ["T1040"]
