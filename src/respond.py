@@ -20,6 +20,12 @@ def add_action(type:str, target:str, result:str) -> Dict:
 
 
 def respond_alert(incident: Dict) -> Dict:
+    """
+    The respond module automates response actions based on incident severity and allowlist configurations.
+    It supports isolating devices not present in the allowlist when the severity is equal to or greater than 70.
+    Response actions are appended to the incident with timestamps and tracked in the incident timeline.
+    """
+
     severity = incident.get('triage', {}).get('severity', 0)
     device_id = incident.get('asset', {}).get('device_id')
     device_allowed = read_a_yaml_file(ALLOWLISTS).get('assets', {}).get('device_ids', [])

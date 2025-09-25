@@ -48,6 +48,13 @@ def get_risk(current_risk:Dict, indicator:Dict) -> Dict:
 
 
 def enrich_alert(incident:Dict) -> Dict:
+    """
+    The enrich module enhances the ingested data using local threat intelligence sources.
+    Adds context and severity levels for better prioritization.
+    For each indicator, the module selects the highest score available.
+    The enriched indicators are added back into the incident, along with updated timeline details.  
+    """
+
     indicators_list = []
     providers_verdicts = {}
     

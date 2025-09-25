@@ -5,6 +5,13 @@ from src.utils import add_timeline
 
 
 def normalize_alert(alert_ingested: Dict) -> Dict:
+    """
+    The normalize module validates and normalizes the ingested data.
+    It generates and ensures a unique 'incident_id' with UUID.
+    It extracts key entities such as assets and indicators.
+    Additionally, it adds a timeline to ensure traceability.
+    """
+
     incident_id = str(uuid.uuid4())
 
     timeline = [alert_ingested['timeline']]

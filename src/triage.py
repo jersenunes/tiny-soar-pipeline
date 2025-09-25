@@ -76,6 +76,12 @@ def intel_boosts(severity, indicators, allowlisted):
 
 
 def triage_alert(incident):
+    """
+    The triage module evaluates enriched alerts to produce a final triage decision.
+    It includes severity score, severity bucket, tags, and MITRE ATT&CK techniques.  
+    It considers allowlists to suppress false positives.
+    """
+    
     incident_type = incident['source_alert']['type']
     base_severity = severity_by_type(incident['source_alert']['type'])
     

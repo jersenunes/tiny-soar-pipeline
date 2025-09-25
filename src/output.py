@@ -18,6 +18,12 @@ def make_summary(incident: Dict):
 
 
 def output_alert(incident: Dict) -> Dict:
+    """
+    The output module handles persistence and reporting of processed incidents in JSON and Markdown formats.
+    It uses Jinja2 templates to generate human-readable summaries for each incident.
+    All results are stored in structured directories, ensuring both raw and summarized data are accessible.
+    """
+
     incident_path = Path(os.path.join(INCIDENTS, f"{incident['incident_id']}.json"))
     
     if incident.get('actions'):

@@ -8,6 +8,13 @@ from typing import Dict, List
 from pathlib import Path
 
 
+"""
+The utils module provides utility functions for file I/O and timeline management.  
+It ensures safe persistence of artifacts and robust reading of configuration files.  
+These helpers abstract low-level operations, supporting reliability across all pipeline stages. 
+"""
+
+
 def write_a_file(path:Path, actions:List[Dict]) -> None:
     try:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -43,7 +50,7 @@ def add_timeline(stage:str, details:str) -> Dict:
         print(f"Error adding timeline: {e}")
     
 
-def read_a_json_file(path:Path) -> Dict:
+def read_a_json_file(path:Path | str) -> Dict:
     try:
         with open(path, 'r') as file:
             json_file = json.load(file)

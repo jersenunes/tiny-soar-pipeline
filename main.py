@@ -10,6 +10,16 @@ from src.respond import respond_alert
 from src.output import output_alert
 
 
+"""
+This project was developed to automate cybersecurity operations using SOAR.
+Through Python scripts:
+- Improve detection and response speed.
+- Automate manual and repetitive tasks.
+- Provide traceability through logs and timelines.
+- Enhances incident response efficiency.
+"""
+
+
 def process_incident(alert_file:str) -> Dict:
     try:
         incident = ingest_alert(alert_file)
