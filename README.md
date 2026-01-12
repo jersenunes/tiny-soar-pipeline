@@ -1,6 +1,23 @@
-# Tiny SOAR Pipeline
+# SOAR Pipeline — Modular Security Automation Prototype
+## What problem this solves
+This repository implements a minimal but realistic SOAR pipeline to demonstrate how alerts are ingested, normalized, enriched with threat intelligence, triaged, and responded to. It simulates real SOC workflows and can be extended to integrate with real SOAR platforms.
 
-This project implements a minimal SOAR pipeline for alert ingestion, normalization, enrichment, triage, response, and output. It simulates response actions (like device isolation) using local mock Threat Intelligence data and generates normalized incidents and Markdown summaries.
+## Why it matters
+Security Operations Centers (SOC) process thousands of alerts per day; automation reduces manual workload, improves consistency, and enhances speed of incident handling.
+
+## Features
+* Modular architecture following SOAR stages
+* Python scripts for each pipeline component
+* Mock TI data for enrichment
+* Automated summary generation
+* Unit tests with pytest
+
+## Usage
+1. Clone the repo
+2. Install dependencies: pip install -r requirements.txt
+3. Add sample alerts in alerts/
+4. Run: python main.py alerts/example.json
+5. View normalized output + Markdown summaries
 
 ---
 
@@ -27,7 +44,7 @@ project/
 
 ---
 
-## Prerequisites
+## Prerequisites | Install dependencies
 
 * Python 3.10+
 * Python packages:
@@ -59,7 +76,7 @@ pytest
 Via CLI:
 
 ```bash
-python main.py alerts/sentinel.json
+python main.py alerts/<file>.json
 ```
 
 The pipeline performs the following steps:
@@ -73,7 +90,7 @@ The pipeline performs the following steps:
 
 ---
 
-## Output
+## Observe normalized output and Markdown summaries
 
 * `out/incidents/<incident_id>.json` → normalized incident JSON.
 * `out/summaries/<incident_id>.md` → analyst Markdown summary.
@@ -81,7 +98,7 @@ The pipeline performs the following steps:
 
 ---
 
-## Unit Testing
+## Run tests
 
 The project uses **pytest** for unit testing.
 
@@ -119,4 +136,4 @@ pytest tests/test_ingest.py::test_ingest_alert
 
 ## Author
 
-Jersé Nunes
+Jersé Nunes — Security Automation Engineer
